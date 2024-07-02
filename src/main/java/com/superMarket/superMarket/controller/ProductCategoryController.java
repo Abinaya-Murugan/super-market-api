@@ -1,5 +1,6 @@
 package com.superMarket.superMarket.controller;
 
+import com.superMarket.superMarket.domain.Product;
 import com.superMarket.superMarket.domain.ProductCategory;
 import com.superMarket.superMarket.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class ProductCategoryController {
     public ResponseEntity<ProductCategory> createProductCategory(@RequestBody ProductCategory productCategory)
     {
         return ResponseEntity.ok(productCategoryService.create(productCategory));
+    }
+
+    @PutMapping
+    public ResponseEntity<ProductCategory> modifyProductCategory(@PathVariable String id,@RequestBody ProductCategory prod) {
+        return ResponseEntity.ok(productCategoryService.modifyProductCategory(id,prod));
     }
 
 }

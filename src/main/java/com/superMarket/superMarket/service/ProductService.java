@@ -2,6 +2,7 @@ package com.superMarket.superMarket.service;
 
 import com.superMarket.superMarket.domain.Product;
 import com.superMarket.superMarket.domain.ProductCategory;
+import com.superMarket.superMarket.exception.ProductNotFoundException;
 import com.superMarket.superMarket.repo.ProductCategoryRepository;
 import com.superMarket.superMarket.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,16 @@ public class ProductService {
     public Product create(Product product) {
         return productRepository.save(new
                 Product(product.getName(),product.getDescription(),product.getPrice(),product.getProductCategory(),product.getQuantity()));
+    }
+
+    public Product modifyProduct(int id,Product product)
+    {
+        Product p=productRepository.findById(id).orElseThrow(()->new ProductNotFoundException("Product ID not found!!"));
+        p.setQuantity(product.getQuantity());
+        p.setName(product.getName());
+        p.setDescription(product.getDescription());
+        p.setPrice(product.getPrice());
+        p.setProductCategory(product.getProductCategory());
+        return p;
     }
 }
