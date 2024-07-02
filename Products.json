@@ -1,0 +1,63 @@
+[
+  {
+    "name": "Bananas",
+    "description": "Fresh ripe bananas",
+    "price": 1.20,
+    "category": "FR",
+    "quantity" : 2
+  },
+  {
+    "name": "Apples",
+    "description": "Crisp and juicy red apples",
+    "price": 2.50,
+    "category": "FR",
+    "quantity" : 10
+  },
+  {
+    "name": "Carrots",
+    "description": "Organic fresh carrots",
+    "price": 1.75,
+    "category": "VG",
+    "quantity" : 10
+  },
+  {
+    "name": "Broccoli",
+    "description": "Green and healthy broccoli",
+    "price": 2.20,
+    "category": "VG",
+    "quantity" : 10
+  },
+  {
+    "name": "Coca-Cola",
+    "description": "Refreshing Coca-Cola soda",
+    "price": 1.50,
+    "category": "BV",
+    "quantity" : 10
+  },
+  {
+    "name": "Green Tea",
+    "description": "Healthy green tea",
+    "price": 3.00,
+    "category": "BV",
+    "quantity" : 10
+  },
+  {
+    "name": "Pretzels",
+    "description": "Crunchy salted pretzels",
+    "price": 2.75,
+    "category": "SN",
+    "quantity" : 10
+  },
+  {
+    "name": "Granola Bars",
+    "description": "Healthy and delicious granola bars",
+    "price": 4.00,
+    "category": "SN",
+    "quantity" : 10
+  }
+
+
+
+
+
+]
