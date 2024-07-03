@@ -18,5 +18,11 @@ public class GlobalExceptionHandler {
     {
         return new ResponseEntity<>(ex.getMessage(),HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(ProductCategoryNotFoundException.class)
+    public ResponseEntity<String> handleProductCategoryNotFoundException(ProductCategoryNotFoundException ex)
+    {
+        return new ResponseEntity<>(ex.getMessage(),HttpStatus.BAD_REQUEST);
+    }
 }
 

@@ -40,6 +40,7 @@ public class ProductCategoryService {
         ProductCategory pc=productCategoryRepository.findById(id).orElseThrow(()-> new ProductNotFoundException("Product Category Not Found"));
         pc.setDescription(prod.getDescription());
         pc.setName(prod.getName());
+        productCategoryRepository.save(pc);
         return pc;
     }
 }

@@ -32,7 +32,7 @@ public class ProductCategoryController {
         return ResponseEntity.ok(productCategoryService.create(productCategory));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<ProductCategory> modifyProductCategory(@PathVariable String id,@RequestBody ProductCategory prod) {
         return ResponseEntity.ok(productCategoryService.modifyProductCategory(id,prod));
     }
