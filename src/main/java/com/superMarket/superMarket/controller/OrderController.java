@@ -28,4 +28,10 @@ public class OrderController {
     {
         return ResponseEntity.ok(ordersService.getOrders());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Orders> modifyOrders(@PathVariable int id, @RequestBody Orders orders)
+    {
+        return ResponseEntity.ok(ordersService.modifyProduct(id,orders));
+    }
 }

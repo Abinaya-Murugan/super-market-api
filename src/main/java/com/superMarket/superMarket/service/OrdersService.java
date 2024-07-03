@@ -45,4 +45,23 @@ public class OrdersService {
     {
         return (List<Orders>) ordersRepository.findAll();
     }
+
+    public Orders modifyProduct(int id, Orders orders) {
+        Orders o=ordersRepository.findById(id).
+                orElseThrow(()->new RuntimeException("Order "+id+" Not Found in our Market!!"));
+        o.setProducts(orders.getProducts());
+        double total=0.0;
+        for(String pr:orders.getProducts())
+        {
+            Product p=productRepository.findByName(pr).
+                    orElseThrow(()->new ProductNotFoundException("Product "+pr+" Not Found in our Market!!"));
+            if(p.getQuantity()==0)
+                throw new ProductNotAvailableException("Product "+pr+" is not in stock now!!");
+            p.setQuantity(p.getQuantity()-1);
+            total+=p.getPrice();
+        }
+        o.setTotal(total);
+        ordersRepository.save(o);
+        return o;
+    }
 }
