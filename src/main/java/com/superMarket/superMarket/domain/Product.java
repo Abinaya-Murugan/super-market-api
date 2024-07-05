@@ -24,6 +24,9 @@ public class Product {
     @Column
     int quantity;
 
+    @Column
+    String image;
+
     public int getProductId() {
         return productId;
     }
@@ -64,12 +67,13 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Product(String name, String description, double price, ProductCategory productCategory, int quantity) {
+    public Product(String name, String description, double price, ProductCategory productCategory, int quantity,String image) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.productCategory = productCategory;
         this.quantity=quantity;
+        this.image=image;
     }
 
     protected Product() {
@@ -77,6 +81,14 @@ public class Product {
 
     public ProductCategory getProductCategory() {
         return productCategory;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setProductCategory(ProductCategory productCategory) {

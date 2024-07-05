@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:3000","https://192.168.1.3:3000"})
 @RequestMapping("/products")
 public class ProductController {
     @Autowired
@@ -22,8 +23,15 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<List<Product>> getAllOrders() {
-        List<Product> orders = productService.getAllOrders();
-        return ResponseEntity.ok(orders);
+        List<Product> products = productService.getAllProducts();
+        return ResponseEntity.ok(products);
+    }
+
+    @GetMapping("/{productCategory}")
+    public ResponseEntity<List<Product>> getProductByCategory(@PathVariable String productCategory)
+    {
+        List<Product> products = productService.getProductByCategory(productCategory);
+        return ResponseEntity.ok(products);
     }
 
     @PostMapping
