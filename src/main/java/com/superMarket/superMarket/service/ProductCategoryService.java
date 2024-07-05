@@ -19,10 +19,10 @@ public class ProductCategoryService {
         this.productCategoryRepository=productCategoryRepository;
     }
 
-    public ProductCategory create(String catId,String name,String description)
+    public ProductCategory create(String catId,String name,String description,String image)
     {
         return productCategoryRepository.findById(catId).
-                orElse(productCategoryRepository.save(new ProductCategory(catId,name,description)));
+                orElse(productCategoryRepository.save(new ProductCategory(catId,name,description,image)));
     }
 
     public List<ProductCategory> getAllOrders() {
@@ -33,7 +33,7 @@ public class ProductCategoryService {
     {
         return productCategoryRepository.findById(productCategory.getCatId()).
                 orElse(productCategoryRepository.
-                        save(new ProductCategory(productCategory.getCatId(),productCategory.getName(),productCategory.getDescription())));
+                        save(new ProductCategory(productCategory.getCatId(),productCategory.getName(),productCategory.getDescription(),productCategory.getImage())));
     }
 
     public ProductCategory modifyProductCategory(String id, ProductCategory prod) {
@@ -43,4 +43,5 @@ public class ProductCategoryService {
         productCategoryRepository.save(pc);
         return pc;
     }
+    
 }

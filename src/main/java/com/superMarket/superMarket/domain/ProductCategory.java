@@ -16,6 +16,17 @@ public class ProductCategory {
     @Column(length = 2000)
     private String description;
 
+    @Column
+    String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String getCatId() {
         return catId;
     }
@@ -36,10 +47,11 @@ public class ProductCategory {
         this.name = name;
     }
 
-    public ProductCategory(String catId, String name, String description) {
+    public ProductCategory(String catId, String name, String description,String image) {
         this.catId = catId;
         this.name = name;
         this.description = description;
+        this.image=image;
     }
 
     protected ProductCategory() {

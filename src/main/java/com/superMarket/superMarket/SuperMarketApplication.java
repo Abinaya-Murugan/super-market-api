@@ -51,19 +51,19 @@ public class SuperMarketApplication implements CommandLineRunner {
 						importedProduct.getDescription(),
 						importedProduct.getPrice(),
 						importedProduct.getCategory(),
-						importedProduct.getQuantity()));
+						importedProduct.getQuantity(),importedProduct.getImage()));
 	}
 
 	private void createProductCategory() {
-		productCategoryService.create("BV","Beverages","Drinks, juices, and other beverages");
-		productCategoryService.create("SN","Snacks","Chips, cookies, and other snacks");
-		productCategoryService.create("VG","Vegetables","Fresh Vegetables");
-		productCategoryService.create("FR","Fruits","Fresh Fruits");
+		productCategoryService.create("BV","Beverages","Beverages category includes a wide variety of drinks, juices, and other refreshing beverages. From energizing coffee blends to healthy fruit juices and soft drinks, this category caters to diverse tastes and preferences.","https://i.pinimg.com/originals/3f/ef/cb/3fefcb509e1839f5a6235bcc668b711a.jpg");
+		productCategoryService.create("SN","Snacks","Snacks category offers a delicious array of chips, cookies, and other savory and sweet treats. Perfect for satisfying cravings between meals or enjoying as a quick snack on the go.","https://i.pinimg.com/originals/66/ac/43/66ac431b2dded792837e0fba60e2240b.jpg");
+		productCategoryService.create("VG","Vegetables","Vegetables category features a variety of fresh and nutritious produce, sourced to bring you the best in flavor and quality. From leafy greens to vibrant root vegetables, our selection caters to your culinary needs.","https://i.pinimg.com/originals/93/06/03/9306037b0fdcac44cefbdb4ecd3c91ff.jpg");
+		productCategoryService.create("FR","Fruits","Fruits category offers a vibrant selection of fresh and juicy fruits, packed with vitamins and natural goodness. From seasonal favorites to exotic varieties, our fruits are a delicious addition to any diet.","https://i.pinimg.com/originals/33/13/c1/3313c1b779276d0cb6137f02ac586a9c.jpg");
 	}
 
 	private static class ReadFromFile
 	{
-		private String name,description,category;
+		private String name,description,category,image;
 
 		private Double price;
 
@@ -88,6 +88,9 @@ public class SuperMarketApplication implements CommandLineRunner {
 
 		public String getCategory() {
 			return category;
+		}
+		public String getImage() {
+			return image;
 		}
 
 		public int getQuantity() {
