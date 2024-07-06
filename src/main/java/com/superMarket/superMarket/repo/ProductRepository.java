@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface ProductRepository extends CrudRepository<Product,Integer> {
     Optional<Product> findByName(String name);
-    List<Product> findByProductCategory(ProductCategory productCategory);
+    List<Product> findByCategoryId(ProductCategory productCategory);
 }

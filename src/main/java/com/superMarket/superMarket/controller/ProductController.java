@@ -27,10 +27,10 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
-    @GetMapping("/{productCategory}")
-    public ResponseEntity<List<Product>> getProductByCategory(@PathVariable String productCategory)
+    @GetMapping("/{categoryId}")
+    public ResponseEntity<List<Product>> getProductByCategory(@PathVariable String categoryId)
     {
-        List<Product> products = productService.getProductByCategory(productCategory);
+        List<Product> products = productService.getProductByCategory(categoryId);
         return ResponseEntity.ok(products);
     }
 

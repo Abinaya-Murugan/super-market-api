@@ -7,7 +7,8 @@ public class Product {
 
     @Id
     @GeneratedValue
-    int productId;
+    @Column(name = "id")
+    int id;
 
     @Column(length = 1000)
     String name;
@@ -19,7 +20,8 @@ public class Product {
     double price;
 
     @ManyToOne
-    ProductCategory productCategory;
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    ProductCategory categoryId;
 
     @Column
     int quantity;
@@ -27,8 +29,14 @@ public class Product {
     @Column
     String image;
 
+    @Column
+    boolean isOnDiscount;
+
+    @Column
+    double newPrice;
+
     public int getProductId() {
-        return productId;
+        return id;
     }
 
     public String getName() {
@@ -44,7 +52,7 @@ public class Product {
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        this.id = productId;
     }
 
     public void setName(String name) {
@@ -67,20 +75,22 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Product(String name, String description, double price, ProductCategory productCategory, int quantity,String image) {
+    public Product(String name, String description, double price, ProductCategory productCategory, int quantity,String image,boolean onDiscount,double newPrice) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.productCategory = productCategory;
+        this.categoryId = productCategory;
         this.quantity=quantity;
         this.image=image;
+        this.isOnDiscount=onDiscount;
+        this.newPrice=newPrice;
     }
 
     protected Product() {
     }
 
     public ProductCategory getProductCategory() {
-        return productCategory;
+        return categoryId;
     }
 
     public String getImage() {
@@ -92,6 +102,22 @@ public class Product {
     }
 
     public void setProductCategory(ProductCategory productCategory) {
-        this.productCategory = productCategory;
+        this.categoryId = productCategory;
+    }
+
+    public boolean isOnDiscount() {
+        return isOnDiscount;
+    }
+
+    public void setOnDiscount(boolean onDiscount) {
+        this.isOnDiscount = onDiscount;
+    }
+
+    public double getNewPrice() {
+        return newPrice;
+    }
+
+    public void setNewPrice(double newPrice) {
+        this.newPrice = newPrice;
     }
 }

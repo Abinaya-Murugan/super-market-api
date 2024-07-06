@@ -43,5 +43,5 @@ public class ProductCategoryService {
         productCategoryRepository.save(pc);
         return pc;
     }
-    
+
 }

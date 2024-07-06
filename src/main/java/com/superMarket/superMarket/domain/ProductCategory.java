@@ -8,7 +8,8 @@ import java.util.Objects;
 public class ProductCategory {
 
     @Id
-    private String catId;
+    @Column(name = "id")
+    private String id;
 
     @Column(length = 1000)
     private String name;
@@ -28,7 +29,7 @@ public class ProductCategory {
     }
 
     public String getCatId() {
-        return catId;
+        return id;
     }
 
     public String getName() {
@@ -40,7 +41,7 @@ public class ProductCategory {
     }
 
     public void setCatId(String catId) {
-        this.catId = catId;
+        this.id = catId;
     }
 
     public void setName(String name) {
@@ -48,7 +49,7 @@ public class ProductCategory {
     }
 
     public ProductCategory(String catId, String name, String description,String image) {
-        this.catId = catId;
+        this.id = catId;
         this.name = name;
         this.description = description;
         this.image=image;

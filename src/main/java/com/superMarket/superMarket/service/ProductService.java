@@ -25,12 +25,12 @@ public class ProductService {
         this.productCategoryRepository=productCategoryRepository;
     }
 
-    public Product createProduct(String name,String description,double price,String productCategory,int quantity,String image)
+    public Product createProduct(String name,String description,double price,String categoryId,int quantity,String image,boolean onDiscount,double newPrice)
     {
-        ProductCategory pc=productCategoryRepository.findById(productCategory).
+        ProductCategory pc=productCategoryRepository.findById(categoryId).
                 orElseThrow(()->new ProductCategoryNotFoundException("Product Category Not Found"));
         return productRepository.findByName(name).
-                orElse(productRepository.save(new Product(name,description,price,pc,quantity,image)));
+                orElse(productRepository.save(new Product(name,description,price,pc,quantity,image,onDiscount,newPrice)));
     }
 
     public List<Product> getAllProducts() {
@@ -41,7 +41,7 @@ public class ProductService {
         ProductCategory pc=productCategoryRepository.findById(product.getProductCategory().getCatId()).
                 orElseThrow(()->new ProductCategoryNotFoundException("Product Category Not Found"));
         return productRepository.save(new
-                Product(product.getName(),product.getDescription(),product.getPrice(),product.getProductCategory(),product.getQuantity(),product.getImage()));
+                Product(product.getName(),product.getDescription(),product.getPrice(),product.getProductCategory(),product.getQuantity(),product.getImage(), product.isOnDiscount(), product.getNewPrice()));
     }
 
     public Product modifyProduct(int id,Product product)
@@ -56,9 +56,9 @@ public class ProductService {
         return p;
     }
 
-    public List<Product> getProductByCategory(@PathVariable String productCategory) {
-        ProductCategory pc=productCategoryRepository.findById(productCategory).
+    public List<Product> getProductByCategory(@PathVariable String categoryId) {
+        ProductCategory pc=productCategoryRepository.findById(categoryId).
                 orElseThrow(()->new ProductCategoryNotFoundException("Product Category not found"));
-        return productRepository.findByProductCategory(pc);
+        return productRepository.findByCategoryId(pc);
     }
 }
